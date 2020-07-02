@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myportapp.apps.MyportappConfig',#register myportapp
+    'rest_framework',
     
 ]
 
