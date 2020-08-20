@@ -15,8 +15,26 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls import  url
+
+
+from rest_framework import routers
+
+from myportapp import views
+
+from django.conf import settings
+from django.views.static import serve
+
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('myportapp.urls'))
+    
+    path('api/project/', views.ProjectView.as_view(), name='projects'),
+    path('api/skills/', views.SkillsView.as_view(), name='skills'),
+    path('', include('myportapp.urls')),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT,})
 ]
+
+

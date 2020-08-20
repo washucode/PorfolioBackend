@@ -4,6 +4,7 @@ class Project(models.Model):
     project_name = models.CharField(max_length=100)
     screenshot = models.ImageField(upload_to='projects/')
     project_link = models.CharField(max_length=255)
+    project_type = models.CharField(max_length=255, null=True)
 
 
     def __str__(self):
@@ -12,11 +13,11 @@ class Project(models.Model):
 
 class TechUsed(models.Model):
     project = models.ForeignKey(Project, related_name="techused",on_delete=models.CASCADE)
-    tech_name = models.TextField()
+    tech_name = models.CharField(max_length=100)
 
 
     def __str__(self):
-        return self.tech_name
+        return '%s' % (self.tech_name)
 
 
 
